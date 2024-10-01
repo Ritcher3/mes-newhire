@@ -1,0 +1,200 @@
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: black;  /* Set the background of the page to black */
+  font-family: "Titillium Web", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;             /* Ensure it takes the full height of the viewport */
+}
+
+@media screen and (min-width: 40em) {
+  body {
+    font-size: 1.25em;
+}
+
+/* Form Styling */
+.form .button, .form .message, .customSelect, .form .select, .form .textarea, .form .text-input, .form .option-input + label, .form .checkbox-input + label, .form .label {
+  padding: 0.75em 1em;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  line-height: normal;
+  border-radius: 0;
+  border: none;
+  background: none;
+  display: block;
+}
+
+.form .label {
+  font-weight: bold;
+  color: white;  /* Set label text to white */
+  padding-top: 0;
+  padding-left: 0;
+  letter-spacing: 0.025em;
+  font-size: 1.125em;
+  line-height: 1.25;
+  position: relative;
+  z-index: 100;
+}
+
+.required .form .label:after, .form .required .label:after {
+  content: " *";
+  color: #E8474C;
+  font-weight: normal;
+  font-size: 0.75em;
+  vertical-align: top;
+}
+
+/* Input and Select fields */
+.customSelect, .form .select, .form .textarea, .form .text-input {
+  font: inherit;
+  line-height: normal;
+  width: 100%;
+  box-sizing: border-box;
+  background: gray;   /* Set the input fields to gray */
+  color: white;       /* Set the input text to white */
+  position: relative;
+  border-radius: 0; /* Remove rounded edges */
+  padding: 0.75em 1em;
+  border: none;      /* Remove the white outline around input fields */
+}
+
+/* Placeholder text color set to white */
+.customSelect::placeholder, .form .select::placeholder, .form .textarea::placeholder, .form .text-input::placeholder {
+  color: white;       /* Placeholder text should also be white */
+  opacity: 1;         /* Ensure it remains fully opaque */
+}
+
+.customSelect:-webkit-autofill, .form .select:-webkit-autofill, .form .textarea:-webkit-autofill, .form .text-input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px gray inset;
+  -webkit-text-fill-color: white;
+}
+
+/* Error messages */
+.form .message {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+  font-size: 0.625em;
+  color: white;
+}
+
+/* Button Styling */
+.form .button {
+  font: inherit;
+  line-height: normal;
+  cursor: pointer;
+  background: #E8474C;
+  color: white;
+  font-weight: bold;
+  width: auto;
+  margin-left: auto;
+  padding-left: 2em;
+  padding-right: 2em;
+  border-radius: 5px; /* Rounded corners for button */
+}
+
+.form .button:hover, .form .button:focus, .form .button:active {
+  color: white;
+  background-color: #d13a40; /* Darker red on hover */
+}
+
+/* Form box styling */
+.form {
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: black; /* Keep the form's background black */
+  border-radius: 10px;     /* Rounded corners for the form */
+  border: 2px solid black; /* Black border around the form */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Subtle white glow */
+}
+
+.fieldset {
+  width: 100%; /* Make fieldsets full width */
+  margin-bottom: 1.5em; /* Add space between sections */
+}
+
+.form .field {
+  width: 100%;
+  margin: 0 0 1.5em 0;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em; /* This creates a gap between First Name and Last Name */
+}
+
+@media screen and (min-width: 40em) {
+  .form .field.half {
+    width: calc(50% - 0.5em); /* Adjust width to account for the gap */
+  }
+}
+
+/* Remove outline and focus styling for the h1 and other elements */
+h1, h1:focus, h1:active {
+  outline: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  background: none; /* Ensure no background behind the h1 */
+}
+
+/* Remove outline from buttons, inputs, and selects on focus */
+button:focus, input:focus, select:focus, textarea:focus {
+  outline: none; /* Remove the default focus outline */
+  box-shadow: none; /* Remove any box shadow on focus */
+}
+
+/* Styling for the white banner */
+.banner {
+  background-color: rgb(141, 54, 54);  /* White background for the banner */
+  padding: 10px 20px;       /* Padding for spacing inside the banner */
+  display: flex;            /* Flexbox to align items */
+  justify-content: space-between; /* Space between header text and logo */
+  align-items: center;      /* Center content vertically */
+  border-bottom: 2px solid #e0e0e0; /* Optional: a bottom border for styling */
+  height: 100px;            /* Set a fixed height for the banner */
+}
+
+
+/* Styling for the New Hire Form text in the banner */
+.banner-title {
+  color: black;             /* Black text color */
+  font-size: 1.5em;         /* Adjust font size */
+  font-weight: bold;        /* Bold for emphasis */
+  margin: 0;                /* Remove default margin */
+}
+
+
+/* Style for the logo image */
+.logo {
+  height: 50px;             /* Adjust the height of the logo */
+  width: auto;              /* Maintain aspect ratio */
+}
+
+/* Ensure other styling remains the same */
+.App {
+  padding: 0;
+  margin: 0;
+}
+
+.App h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style for legends */
+legend {
+  color: white;    /* Set legends like "Employee Information" to white */
+  font-size: 1.5em; /* Adjust font size if necessary */
+  font-weight: bold; /* Make it bold to stand out */
+  margin-bottom: 10px; /* Add space between the legend and the fields */
+}
