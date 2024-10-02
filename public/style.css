@@ -55,7 +55,7 @@ body {
   line-height: normal;
   width: 100%;
   box-sizing: border-box;
-  background: gray;   /* Set the input fields to gray */
+  background: rgb(118, 118, 118);   /* Set the input fields to gray */
   color: white;       /* Set the input text to white */
   position: relative;
   border-radius: 0; /* Remove rounded edges */
@@ -109,7 +109,7 @@ body {
   max-width: 40em;
   margin: 0 auto;
   padding: 20px;
-  background-color: black; /* Keep the form's background black */
+  background-color: rgb(33, 33, 33); /* Keep the form's background black */
   border-radius: 10px;     /* Rounded corners for the form */
   border: 2px solid black; /* Black border around the form */
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Subtle white glow */
@@ -153,9 +153,9 @@ button:focus, input:focus, select:focus, textarea:focus {
   box-shadow: none; /* Remove any box shadow on focus */
 }
 
-/* Styling for the white banner */
+/* Styling for the banner */
 .banner {
-  background-color: rgb(141, 54, 54);  /* White background for the banner */
+  background-color: rgb(141, 54, 54);  /* Red background for the banner */
   padding: 10px 20px;       /* Padding for spacing inside the banner */
   display: flex;            /* Flexbox to align items */
   justify-content: space-between; /* Space between header text and logo */

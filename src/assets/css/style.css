@@ -1,3 +1,32 @@
+/* Checkbox styling similar to your example */
+.form .checkbox, .form .option {
+  float: left;
+  margin: 1px;
+}
+
+.form .checkboxes, .form .options {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  overflow: hidden;
+}
+
+.checkbox {
+  display: inline-block;
+  margin-right: 15px;
+  position: relative;
+}
+
+.checkbox-input {
+  margin-right: 5px;
+}
+
+.checkbox-label {
+  font-weight: bold;
+  color: #111;
+  cursor: pointer;
+}
+
 html { 
   -webkit-font-smoothing: antialiased;
 }
@@ -13,8 +42,37 @@ body {
   }
 }
 
-/* Form Styling */
-.form .button, .form .message, .customSelect, .form .select, .form .textarea, .form .text-input, .form .option-input + label, .form .checkbox-input + label, .form .label {
+.form {
+  max-width: 40em;
+  margin: 0 auto;
+}
+
+/* Added this class to create a flex container for form rows */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust spacing between fields as needed */
+}
+
+/* Modified .field to work within flex container */
+.form .field {
+  flex: 1; /* Fields will take equal width */
+  margin: 0 0 1.5em 0;
+}
+
+.form .field.half {
+  width: calc(50% - 1px);
+}
+
+.form .button,
+.form .message,
+.customSelect,
+.form .select,
+.form .textarea,
+.form .text-input,
+.form .option-input + label,
+.form .checkbox-input + label,
+.form .label {
   padding: 0.75em 1em;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -25,6 +83,8 @@ body {
   border: none;
   background: none;
   display: block;
+  width: 100%; /* Ensure inputs fill their container */
+  box-sizing: border-box;
 }
 
 .form .label {
@@ -39,7 +99,8 @@ body {
   z-index: 100;
 }
 
-.required .form .label:after, .form .required .label:after {
+.required .form .label:after,
+.form .required .label:after {
   content: " *";
   color: #E8474C;
   font-weight: normal;
@@ -47,21 +108,34 @@ body {
   vertical-align: top;
 }
 
-.customSelect, .form .select, .form .textarea, .form .text-input, .form .option-input + label, .form .checkbox-input + label {
+.customSelect,
+.form .select,
+.form .textarea,
+.form .text-input,
+.form .option-input + label,
+.form .checkbox-input + label {
   font: inherit;
   line-height: normal;
-  width: 100%;
-  box-sizing: border-box;
   background: #222222;
   color: white;
   position: relative;
 }
 
-.customSelect:placeholder, .form .select:placeholder, .form .textarea:placeholder, .form .text-input:placeholder, .form .option-input + label:placeholder, .form .checkbox-input + label:placeholder {
+.customSelect::placeholder,
+.form .select::placeholder,
+.form .textarea::placeholder,
+.form .text-input::placeholder,
+.form .option-input + label::placeholder,
+.form .checkbox-input + label::placeholder {
   color: white;
 }
 
-.customSelect:-webkit-autofill, .form .select:-webkit-autofill, .form .textarea:-webkit-autofill, .form .text-input:-webkit-autofill, .form .option-input + label:-webkit-autofill, .form .checkbox-input + label:-webkit-autofill {
+.customSelect:-webkit-autofill,
+.form .select:-webkit-autofill,
+.form .textarea:-webkit-autofill,
+.form .text-input:-webkit-autofill,
+.form .option-input + label:-webkit-autofill,
+.form .checkbox-input + label:-webkit-autofill {
   box-shadow: 0 0 0px 1000px #111111 inset;
   -webkit-text-fill-color: white;
   border-top-color: #111111;
@@ -69,7 +143,6 @@ body {
   border-right-color: #111111;
 }
 
-/* More styles related to input and form validation... */
 .form .message {
   position: absolute;
   bottom: 0;
@@ -92,28 +165,23 @@ body {
   padding-right: 2em;
 }
 
-.form .button:hover, .form .button:focus, .form .button:active {
+.form .button:hover,
+.form .button:focus,
+.form .button:active {
   color: white;
 }
 
-.form {
-  max-width: 40em;
-  margin: 0 auto;
+/* Optional: Adjust margin for the submit button */
+.field.button-field {
+  margin-top: 2em;
+}
+
+.radio-group {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: flex-end;
+  gap: 20px;
 }
 
-.form .field {
-  width: 100%;
-  margin: 0 0 1.5em 0;
+.radio-group label {
+  color: white;
+  font-weight: bold;
 }
-
-@media screen and (min-width: 40em) {
-  .form .field.half {
-    width: calc(50% - 1px);
-  }
-}
-
-/* More form-related styles... */
