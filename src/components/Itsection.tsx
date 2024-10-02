@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { UseFormRegister, FieldErrors } from 'react-hook-form';
 
 interface ItsectionProps {
@@ -7,84 +7,181 @@ interface ItsectionProps {
 }
 
 const Itsection: React.FC<ItsectionProps> = ({ register, errors }) => {
-      return (
+  const [showCellPhoneField, setShowCellPhoneField] = useState(false);
+  const [showDeskPhoneExt, setShowDeskPhoneExt] = useState(false);
+  const [showMonitorOptions, setShowMonitorOptions] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState('');
+
+  const handleLocationChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedLocation(event.target.value);
+  };
+
+  return (
     <fieldset>
       <legend>IT Section</legend>
-                     
-        {/* IT Section */}
 
-        {/* Computer Type */}
-        <div className={`field ${errors.computerType ? 'error' : ''}`}>
-          <label className="label">Computer Type</label>
-          <select {...register("computerType", { required: true })} className="select">
-            <option value="">Select a type</option>
-            <option value="laptop">Laptop</option>
-            <option value="desktop">Desktop</option>
-            <option value="tablet">Tablet</option>
-          </select>
-          {errors.computerType && <span className="message">This field is required</span>}
-        </div>
-  
-        {/* Email Setup Required */}
-        <div className={`field ${errors.emailSetupRequired ? 'error' : ''}`}>
-          <label className="label">Email Setup Required?</label>
-          <div className="radio-group">
-            <label>
-              <input
-                type="radio"
-                value="yes"
-                {...register("emailSetupRequired", { required: true })}
-              />
-              Yes
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="no"
-                {...register("emailSetupRequired", { required: true })}
-              />
-              No
-            </label>
-          </div>
-          {errors.emailSetupRequired && <span className="message">This field is required</span>}
-        </div>
-  
-        {/* Software Requirements */}
-        <div className={`field ${errors.softwareRequirements ? 'error' : ''}`}>
-          <label className="label">Software Requirements</label>
-          <textarea
-            {...register("softwareRequirements", { required: true })}
-            placeholder="List software requirements"
-            className="textarea"
+      {/* Email Address */}
+      <div className={`field ${errors.emailDomain ? 'error' : ''}`}>
+        <label className="label">Email Address?</label>
+        <select {...register("emailDomain", { required: true })} className="select">
+          <option value="">Select Email Domain</option>
+          <option value="@mesfire.com">@mesfire.com</option>
+          <option value="@mesuniforms.com">@mesuniforms.com</option>
+          <option value="@lawmensupply.com">@lawmensupply.com</option>
+        </select>
+        {errors.emailDomain && <span className="message">This field is required</span>}
+      </div>
+
+      {/* Mobile Devices */}
+      <div className={`field ${errors.mobileDevices ? 'error' : ''}`}>
+        <label className="label">Mobile Devices</label>
+        <div className="form-radio-group">
+          {/* Cell Phone */}
+          <input
+            className="checkbox-input"
+            id="mobile-cell"
+            name="mobileDevices"
+            type="checkbox"
+            value="cell"
+            {...register("mobileDevices")}
+            onChange={(e) => setShowCellPhoneField(e.target.checked)}
           />
-          {errors.softwareRequirements && <span className="message">This field is required</span>}
-        </div>
-  
-        {/* Access to Network Drive */}
-        <div className={`field ${errors.networkDriveAccess ? 'error' : ''}`}>
-          <label className="label">Access to Network Drive?</label>
-          <div className="radio-group">
-            <label>
-              <input
-                type="radio"
-                value="yes"
-                {...register("networkDriveAccess", { required: true })}
-              />
-              Yes
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="no"
-                {...register("networkDriveAccess", { required: true })}
-              />
-              No
-            </label>
-            </div>
-          {errors.networkDriveAccess && <span className="message">This field is required</span>}
-          </div>
-          </fieldset>
-      );
-}; 
+          <label className="checkbox-label" htmlFor="mobile-cell">Cell Phone</label>
 
-export default Itsection
+          {/* Tablet */}
+          <input
+            className="checkbox-input"
+            id="mobile-tablet"
+            name="mobileDevices"
+            type="checkbox"
+            value="tablet"
+            {...register("mobileDevices")}
+          />
+          <label className="checkbox-label" htmlFor="mobile-tablet">Tablet</label>
+        </div>
+        {showCellPhoneField && (
+          <div className={`field ${errors.cellPhoneNumber ? 'error' : ''}`}>
+            <label className="label">Enter Area Code or Existing Number to Redeploy</label>
+            <input
+              {...register("cellPhoneNumber", { required: showCellPhoneField })}
+              placeholder="Enter Area Code or Existing Number"
+              className="text-input"
+            />
+            {errors.cellPhoneNumber && <span className="message">This field is required</span>}
+          </div>
+        )}
+      </div>
+
+      {/* IT Devices */}
+      <div className={`field ${errors.itDevices ? 'error' : ''}`}>
+        <label className="label">IT Devices</label>
+        <div className="form-radio-group">
+          {/* Desk Phone */}
+          <input
+            className="checkbox-input"
+            id="it-deskphone"
+            name="itDevices"
+            type="checkbox"
+            value="deskPhone"
+            {...register("itDevices")}
+            onChange={(e) => setShowDeskPhoneExt(e.target.checked)}
+          />
+          <label className="checkbox-label" htmlFor="it-deskphone">Desk Phone</label>
+
+          {/* Laptop */}
+          <input
+            className="checkbox-input"
+            id="it-laptop"
+            name="itDevices"
+            type="checkbox"
+            value="laptop"
+            {...register("itDevices")}
+          />
+          <label className="checkbox-label" htmlFor="it-laptop">Laptop</label>
+
+          {/* Desktop */}
+          <input
+            className="checkbox-input"
+            id="it-desktop"
+            name="itDevices"
+            type="checkbox"
+            value="desktop"
+            {...register("itDevices")}
+          />
+          <label className="checkbox-label" htmlFor="it-desktop">Desktop</label>
+
+          {/* Monitors */}
+          <input
+            className="checkbox-input"
+            id="it-monitors"
+            name="itDevices"
+            type="checkbox"
+            value="monitors"
+            {...register("itDevices")}
+            onChange={(e) => setShowMonitorOptions(e.target.checked)}
+          />
+          <label className="checkbox-label" htmlFor="it-monitors">Monitors</label>
+        </div>
+        {showDeskPhoneExt && (
+          <div className={`field ${errors.deskPhoneExt ? 'error' : ''}`}>
+            <label className="label">Specify Extension</label>
+            <input
+              {...register("deskPhoneExt")}
+              placeholder="Enter Extension"
+              className="text-input"
+            />
+            {errors.deskPhoneExt && <span className="message">This field is required</span>}
+          </div>
+        )}
+        {showMonitorOptions && (
+          <div className={`field ${errors.monitorQuantity ? 'error' : ''}`}>
+            <label className="label">Select Number of Monitors</label>
+            <select {...register("monitorQuantity", { required: showMonitorOptions })} className="select">
+              <option value="">Select Quantity</option>
+              <option value="1">1 Monitor</option>
+              <option value="2">2 Monitors</option>
+            </select>
+            {errors.monitorQuantity && <span className="message">This field is required</span>}
+          </div>
+        )}
+      </div>
+
+      {/* Ship to Address */}
+      <div className={`field ${errors.shipToAddress ? 'error' : ''}`}>
+        <label className="label">Ship to Address</label>
+        <select
+          {...register("shipToAddress", { required: true })}
+          className="select"
+          onChange={handleLocationChange}
+        >
+          <option value="">Select a location</option>
+          <option value="branch">Branch Location</option>
+          <option value="home">Home Address</option>
+          <option value="other">Other - Enter Manually</option>
+        </select>
+        {/* Address Field */}
+        <input
+          {...register("manualShipToAddress", { required: selectedLocation === 'other' })}
+          placeholder="Enter address manually"
+          className="text-input"
+          disabled={selectedLocation !== 'other'}
+        />
+        {errors.shipToAddress && <span className="message">This field is required</span>}
+      </div>
+
+      {/* IT Notes Section */}
+      <div className={`field ${errors.itNotes ? 'error' : ''}`}>
+        <label className="label">Extra Instructions for IT</label>
+        <textarea
+          {...register("itNotes")}
+          placeholder="Enter any additional instructions for IT"
+          className="textarea"
+          rows={4}
+        />
+        {errors.itNotes && <span className="message">This field is required</span>}
+      </div>
+    </fieldset>
+  );
+};
+
+export default Itsection;

@@ -1,3 +1,47 @@
+.form .checkbox-input, .form .option-input {
+  display: none; /* Hide the default checkbox and radio buttons */
+}
+
+.form .checkbox-input + label, .form .option-input + label {
+  display: inline-block;
+  width: auto;
+  color: #4E4E4E;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  padding-left: 30px; /* Add padding for the custom checkbox/radio icon */
+}
+
+.form .checkbox-input + label:before, .form .option-input + label:before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 2px solid #4E4E4E;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.form .checkbox-input:checked + label:before, .form .option-input:checked + label:before {
+  background-color: #E8474C; /* Custom color for checked state */
+  border-color: #E8474C;
+}
+
+.form .checkbox-input:checked + label:after, .form .option-input:checked + label:after {
+  content: "✓";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  font-size: 18px;
+  color: white;
+}
+
 html {
   -webkit-font-smoothing: antialiased;
 }
@@ -13,6 +57,7 @@ body {
 @media screen and (min-width: 40em) {
   body {
     font-size: 1.25em;
+  }
 }
 
 /* Form Styling */
@@ -198,3 +243,177 @@ legend {
   font-weight: bold; /* Make it bold to stand out */
   margin-bottom: 10px; /* Add space between the legend and the fields */
 }
+
+/* Remove outline from radio buttons and implement the desired styles */
+/* Hide the default radio button */
+.form .checkbox-input, .form .option-input {
+  display: none; /* Hide the native radio button */
+}
+
+/* Remove the custom checkbox icon */
+.form .checkbox-input + label::before, .form .option-input + label::before {
+  content: none; /* Remove the checkbox icon */
+}
+
+/* Remove the checkmark from the checked state */
+.form .checkbox-input:checked + label::after, .form .option-input:checked + label::after {
+  content: none; /* Remove the checkmark */
+}
+
+/* Styling for the Yes/No label options */
+.form .checkbox-input + label, .form .option-input + label {
+  display: block; /* Stack Yes and No vertically */
+  width: 100px; /* Fixed width for Yes/No options */
+  padding: 10px 20px; /* Padding for button-like appearance */
+  background-color: rgb(118, 118, 118);  /* Background color same as input fields */
+  color: white; /* White text for better visibility */
+  text-align: center; /* Center-align the text */
+  border: 2px solid rgb(118, 118, 118); /* Border matching input field color */
+  cursor: pointer; /* Show pointer cursor when hovering */
+  margin-bottom: 10px; /* Add space between Yes and No options */
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+  border-radius: 0; /* Remove rounded edges */
+}
+
+
+/* When the radio button is selected, change background and border to red */
+.form .checkbox-input:checked + label, .form .option-input:checked + label {
+  background-color: #E8474C;  /* Red background when selected */
+  border-color: #E8474C;  /* Red border when selected */
+}
+
+/* Hover effect to make the options interactive */
+.form .checkbox-input + label:hover, .form .option-input + label:hover {
+  background-color: #777777;  /* Slightly darker gray on hover */
+}
+
+/* General form styling adjustments */
+.form .field {
+  margin-bottom: 1em; /* Reduce space between fields */
+}
+
+/* Label styling */
+.form .label {
+  font-weight: bold;
+  color: white;
+  font-size: 1em; /* Reduce font size for labels */
+  line-height: 1.2;
+}
+
+/* Input and Select fields */
+.customSelect, .form .select, .form .textarea, .form .text-input {
+  font: inherit;
+  line-height: normal;
+  width: 100%;
+  box-sizing: border-box;
+  background: rgb(118, 118, 118); /* Set the input fields to gray */
+  color: white;
+  position: relative;
+  border-radius: 0; /* Remove rounded edges */
+  padding: 0.5em 0.75em; /* Reduce padding inside input fields */
+  font-size: 0.9em; /* Reduce font size for input text */
+  border: none; /* Remove the white outline around input fields */
+}
+
+/* Adjusting placeholder text */
+.customSelect::placeholder, .form .select::placeholder, .form .textarea::placeholder, .form .text-input::placeholder {
+  color: white; /* Placeholder text should also be white */
+  opacity: 1;
+}
+
+/* Styling for the form's input focus (removing outline) */
+button:focus, input:focus, select:focus, textarea:focus {
+  outline: none; /* Remove default focus outline */
+}
+
+/* Error message styling */
+.form .message {
+  font-size: 0.75em; /* Make error messages smaller */
+  color: white;
+}
+
+/* Row styling (First Name, Last Name side by side) */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75em; /* Reduce gap between form-row items */
+}
+
+/* Half-width field for form rows */
+.form .field.half {
+  width: calc(50% - 0.375em); /* Adjust width to account for reduced gap */
+}
+
+/* Button Styling */
+.form .button {
+  font: inherit;
+  line-height: normal;
+  cursor: pointer;
+  background: #E8474C;
+  color: white;
+  font-weight: bold;
+  padding: 0.5em 1.5em; /* Reduce padding for buttons */
+  border-radius: 5px;
+  font-size: 0.9em; /* Reduce button font size */
+}
+
+/* When the radio button is selected, change background and border to red */
+.form .checkbox-input:checked + label, .form .option-input:checked + label {
+  background-color: #E8474C; /* Red background when selected */
+  border-color: #E8474C; /* Red border when selected */
+}
+
+/* Hover effect for interactive elements */
+.form .checkbox-input + label:hover, .form .option-input + label:hover {
+  background-color: #777777; /* Slightly darker gray on hover */
+}
+
+/* For horizontally aligning the radio buttons */
+.form-radio-group-horizontal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-radio-group-horizontal label {
+  margin-right: 20px; /* Adjust as needed to space the options */
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+.field.small {
+  flex: 1;
+}
+
+/* Make input fields and select fields smaller */
+.small-input {
+  width: 100%;
+  padding: 0.5em 0.75em;
+  font-size: 0.9em; /* Reduce font size */
+}
+
+/* For horizontally aligning the radio buttons */
+.form-radio-group-horizontal {
+  display: flex;
+  gap: 10px; /* Reduce the gap between the options */
+}
+
+.form-radio-group-horizontal label {
+  margin-right: 10px; /* Reduce margin to bring them closer */
+}
+
+/* Adjust padding and font size in the physical work location options */
+.checkbox-input + label {
+  padding: 0.25em 0.5em; /* Reduce padding inside the options */
+  font-size: 0.85em; /* Lower font size for options */
+}
+
+/* Add margin between select location and address input */
+.field .text-input {
+  margin-top: 10px; /* Adjust the value as needed */
+}
+

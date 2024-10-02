@@ -3,6 +3,7 @@ import { useFormContext } from 'react-hook-form';
 import AddressAutocomplete from './AddressAutocomplete.tsx';
 import JobInformation from './JobInformation.tsx';
 import ITSection from './Itsection.tsx';
+import HRSection from './Hrsection.tsx';
 
 interface CreateUserViewProps {
   onSubmit: (data: any) => void;
@@ -10,12 +11,13 @@ interface CreateUserViewProps {
 
 const CreateUserView = ({ onSubmit }: CreateUserViewProps) => {
   const { register, handleSubmit, formState: { errors }, setValue } = useFormContext();
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
       {/* Employee Information Section */}
       <fieldset>
         <legend>Employee Information</legend>
-  
+
         {/* First Name, Last Name, and Preferred Name side by side */}
         <div className="form-row">
           {/* First Name */}
@@ -28,7 +30,7 @@ const CreateUserView = ({ onSubmit }: CreateUserViewProps) => {
             />
             {errors.firstName && <span className="message">This field is required</span>}
           </div>
-  
+
           {/* Last Name */}
           <div className={`field ${errors.lastName ? 'error' : ''}`}>
             <label className="label">Last Name</label>
@@ -39,7 +41,7 @@ const CreateUserView = ({ onSubmit }: CreateUserViewProps) => {
             />
             {errors.lastName && <span className="message">This field is required</span>}
           </div>
-  
+
           {/* Preferred Name */}
           <div className={`field ${errors.preferredName ? 'error' : ''}`}>
             <label className="label">Preferred Name</label>
@@ -51,7 +53,7 @@ const CreateUserView = ({ onSubmit }: CreateUserViewProps) => {
             {errors.preferredName && <span className="message">Please enter a valid name</span>}
           </div>
         </div>
-  
+
         {/* Phone Number and Start Date side by side */}
         <div className="form-row">
           {/* Phone Number */}
@@ -65,7 +67,7 @@ const CreateUserView = ({ onSubmit }: CreateUserViewProps) => {
             />
             {errors.phonenumber && <span className="message">Please enter a valid phone number</span>}
           </div>
-  
+
           {/* Start Date */}
           <div className={`field ${errors.startDate ? 'error' : ''}`}>
             <label className="label">Start Date</label>
@@ -78,7 +80,7 @@ const CreateUserView = ({ onSubmit }: CreateUserViewProps) => {
             {errors.startDate && <span className="message">This field is required</span>}
           </div>
         </div>
-  
+
         {/* Personal Email */}
         <div className={`field ${errors.email ? 'error' : ''}`}>
           <label className="label">Personal Email</label>
@@ -96,7 +98,7 @@ const CreateUserView = ({ onSubmit }: CreateUserViewProps) => {
           />
           {errors.personalemail && <span className="message">{errors.personalemail.message}</span>}
         </div>
-  
+
         {/* Home Address with Suggestions */}
         <div className={`field ${errors.address ? 'error' : ''}`}>
           <label className="label">Home Address</label>
@@ -104,17 +106,21 @@ const CreateUserView = ({ onSubmit }: CreateUserViewProps) => {
           {errors.address && <span className="message">This field is required</span>}
         </div>
       </fieldset>
-  
-        {/* Job Information Section */}
-          <JobInformation register={register} errors={errors} />
-          
-        {/* IT Section */}
-          <ITSection register={register} errors={errors} />
-  
+
+      {/* Job Information Section */}
+      <JobInformation register={register} errors={errors} setValue={setValue} />
+
+      {/* HR Section */}
+      <HRSection register={register} errors={errors} />
+
+      {/* IT Section */}
+      <ITSection register={register} errors={errors} />
+
       <div className="field">
         <button type="submit" className="button">Submit</button>
       </div>
     </form>
   );
-}
+};
+
 export default CreateUserView;

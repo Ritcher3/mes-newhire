@@ -34,6 +34,7 @@ const AddressAutocomplete = ({ onChange }: AddressAutocompleteProps) => {
         value={searchTerm}
         placeholder="Enter address"
         onChange={handleInputChange}
+        className="text-input" 
       />
       <ul>
         {suggestions.map((suggestion, index) => (
