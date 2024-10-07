@@ -20,7 +20,7 @@ const JobCategorySelect: React.FC<JobCategorySelectProps> = ({ register, errors 
       <div className={`field small ${errors.jobCategory ? 'error' : ''}`}>
         <label className="label">Job Category</label>
         <select
-          {...register('jobCategory', { required: true })}
+          {...register('jobCategory', { required: false})}
           className="select small-input"
           onChange={handleCategoryChange}
         >
@@ -31,13 +31,13 @@ const JobCategorySelect: React.FC<JobCategorySelectProps> = ({ register, errors 
             </option>
           ))}
         </select>
-        {errors.jobCategory && <span className="message">This field is required</span>}
+       
       </div>
 
       {/* Job Title */}
       <div className={`field small ${errors.jobTitle ? 'error' : ''}`}>
         <label className="label">Job Title</label>
-        <select {...register('jobTitle', { required: true })} className="select small-input">
+        <select {...register('jobTitle', { required: false})} className="select small-input">
           <option value="">Select a title</option>
           {selectedCategory &&
             jobTitlesByCategory[selectedCategory].map((title) => (
@@ -46,7 +46,7 @@ const JobCategorySelect: React.FC<JobCategorySelectProps> = ({ register, errors 
               </option>
             ))}
         </select>
-        {errors.jobTitle && <span className="message">This field is required</span>}
+        
       </div>
     </div>
   );

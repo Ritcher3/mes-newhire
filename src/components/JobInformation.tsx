@@ -41,7 +41,7 @@ const JobInformation: React.FC<JobInformationProps> = ({ register, errors, setVa
         <div className={`field small ${errors.jobCategory ? 'error' : ''}`}>
           <label className="label">Job Category</label>
           <select
-            {...register("jobCategory", { required: true })}
+            {...register("jobCategory", { required: false})}
             className="select small-input"
             onChange={handleCategoryChange}
           >
@@ -52,13 +52,13 @@ const JobInformation: React.FC<JobInformationProps> = ({ register, errors, setVa
               </option>
             ))}
           </select>
-          {errors.jobCategory && <span className="message">This field is required</span>}
+          
         </div>
 
         {/* Job Title */}
         <div className={`field small ${errors.jobTitle ? 'error' : ''}`}>
           <label className="label">Job Title</label>
-          <select {...register("jobTitle", { required: true })} className="select small-input" disabled={!selectedCategory}>
+          <select {...register("jobTitle", { required: false})} className="select small-input" disabled={!selectedCategory}>
             <option value="">Select a title</option>
             {selectedCategory &&
               jobTitlesByCategory[selectedCategory].map((title) => (
@@ -67,18 +67,18 @@ const JobInformation: React.FC<JobInformationProps> = ({ register, errors, setVa
                 </option>
               ))}
           </select>
-          {errors.jobTitle && <span className="message">This field is required</span>}
+          
         </div>
 
       {/* Organization */ }
       <div className={`field small ${errors.organization ? 'error' : ''}`}>
         <label className="label">Organization (EVP/SVP)</label>
-        <select {...register("organization", { required: true })} className="select small-input">
+        <select {...register("organization", { required: false})} className="select small-input">
           <option value="">Select an organization</option>
           <option value="evp">EVP</option>
           <option value="svp">SVP</option>
         </select>
-        {errors.organization && <span className="message">This field is required</span>}
+        
       </div>
       </div>
 
@@ -87,36 +87,36 @@ const JobInformation: React.FC<JobInformationProps> = ({ register, errors, setVa
         {/* Branch */}
         <div className={`field small ${errors.branch ? 'error' : ''}`}>
           <label className="label">Branch</label>
-          <select {...register("branch", { required: true })} className="select small-input">
+          <select {...register("branch", { required: false})} className="select small-input">
             <option value="">Select a branch</option>
             <option value="branch1">Branch 1</option>
             <option value="branch2">Branch 2</option>
           </select>
-          {errors.branch && <span className="message">This field is required</span>}
+          
         </div>
 
         {/* Department */}
         <div className={`field small ${errors.department ? 'error' : ''}`}>
           <label className="label">Department</label>
-          <select {...register("department", { required: true })} className="select small-input">
+          <select {...register("department", { required: false})} className="select small-input">
             <option value="">Select a department</option>
             <option value="engineering">Engineering</option>
             <option value="hr">HR</option>
             <option value="finance">Finance</option>
           </select>
-          {errors.department && <span className="message">This field is required</span>}
+
         </div>
 
       {/* Employee Class */ }
       <div className={`field small ${errors.employeeClass ? 'error' : ''}`}>
         <label className="label">Employee Class</label>
-        <select {...register("employeeClass", { required: true })} className="select small-input">
+        <select {...register("employeeClass", { required: false})} className="select small-input">
           <option value="">Select an employee class</option>
           <option value="fullTime">Full-time</option>
           <option value="partTime">Part-time</option>
           <option value="contractor">Contractor</option>
         </select>
-        {errors.employeeClass && <span className="message">This field is required</span>}
+        
       </div>
       </div>
 
@@ -131,7 +131,7 @@ const JobInformation: React.FC<JobInformationProps> = ({ register, errors, setVa
             name="workRemote"
             type="radio"
             value="yes"
-            {...register("workRemote", { required: true })}
+            {...register("workRemote", { required: false})}
           />
           <label className="checkbox-label" htmlFor="work-remote-yes">Yes</label>
 
@@ -142,18 +142,18 @@ const JobInformation: React.FC<JobInformationProps> = ({ register, errors, setVa
             name="workRemote"
             type="radio"
             value="no"
-            {...register("workRemote", { required: true })}
+            {...register("workRemote", { required: false})}
           />
           <label className="checkbox-label" htmlFor="work-remote-no">No</label>
         </div>
-        {errors.workRemote && <span className="message">This field is required</span>}
+      
       </div>
 
       {/* Physical Work Location */}
       <div className={`field ${errors.physicalWorkAddress ? 'error' : ''}`}>
         <label className="label">Physical Work Location</label>
         <select
-          {...register("physicalWorkLocation", { required: true })}
+          {...register("physicalWorkLocation", { required: false})}
           className="select"
           onChange={handleLocationChange}
         >
@@ -165,12 +165,11 @@ const JobInformation: React.FC<JobInformationProps> = ({ register, errors, setVa
 
         {/* Address Field */}
         <input
-          {...register("physicalWorkAddress", { required: true })}
+          {...register("physicalWorkAddress", { required: false})}
           placeholder="Enter address"
           className="text-input"
           disabled={selectedLocation !== 'other'}
         />
-        {errors.physicalWorkAddress && <span className="message">This field is required</span>}
       </div>
     </fieldset>
   );

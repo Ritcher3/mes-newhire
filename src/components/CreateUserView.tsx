@@ -28,8 +28,10 @@ const CreateUserView = ({ onSubmit }: CreateUserViewProps) => {
               placeholder="First Name"
               className="text-input"
             />
-            {errors.firstName && <span className="message">This field is required</span>}
-          </div>
+            </div>
+           { /* {errors.firstName && <span className="message">This field is required</span>}
+          
+          </div> */}
 
           {/* Last Name */}
           <div className={`field ${errors.lastName ? 'error' : ''}`}>
@@ -39,7 +41,7 @@ const CreateUserView = ({ onSubmit }: CreateUserViewProps) => {
               placeholder="Last Name"
               className="text-input"
             />
-            {errors.lastName && <span className="message">This field is required</span>}
+            {/* {errors.lastName && <span className="message">This field is required</span>} */}
           </div>
 
           {/* Preferred Name */}
@@ -50,7 +52,7 @@ const CreateUserView = ({ onSubmit }: CreateUserViewProps) => {
               placeholder="Preferred Name"
               className="text-input"
             />
-            {errors.preferredName && <span className="message">Please enter a valid name</span>}
+            
           </div>
         </div>
 
@@ -60,29 +62,29 @@ const CreateUserView = ({ onSubmit }: CreateUserViewProps) => {
           <div className={`field ${errors.phonenumber ? 'error' : ''}`}>
             <label className="label">Phone Number</label>
             <input
-              {...register("phonenumber", { required: true })}
+              {...register("phonenumber", { required: false })}
               placeholder="Phone Number"
               type="tel"
               className="text-input"
             />
-            {errors.phonenumber && <span className="message">Please enter a valid phone number</span>}
+            
           </div>
 
           {/* Start Date */}
           <div className={`field ${errors.startDate ? 'error' : ''}`}>
             <label className="label">Start Date</label>
             <input
-              {...register("startDate", { required: true })}
+              {...register("startDate", { required: false })}
               placeholder="Start Date"
               type="date"
               className="text-input"
             />
-            {errors.startDate && <span className="message">This field is required</span>}
+            
           </div>
         </div>
 
         {/* Personal Email */}
-        <div className={`field ${errors.email ? 'error' : ''}`}>
+        <div className={`field ${errors.personalEmail ? 'error' : ''}`}>
           <label className="label">Personal Email</label>
           <input
             {...register("personalEmail", {
@@ -96,14 +98,14 @@ const CreateUserView = ({ onSubmit }: CreateUserViewProps) => {
             type="email"
             className="text-input"
           />
-          {errors.personalemail && <span className="message">{errors.personalemail.message}</span>}
+          {errors.personalEmail && <span className="message">{errors.personalEmail.message}</span>}
         </div>
 
         {/* Home Address with Suggestions */}
-        <div className={`field ${errors.address ? 'error' : ''}`}>
+        <div className={`field ${errors.homeAddress ? 'error' : ''}`}>
           <label className="label">Home Address</label>
           <AddressAutocomplete onChange={(value) => setValue("address", value)} />
-          {errors.address && <span className="message">This field is required</span>}
+          
         </div>
       </fieldset>
 

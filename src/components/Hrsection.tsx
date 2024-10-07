@@ -20,22 +20,22 @@ const HrSection: React.FC<HrSectionProps> = ({ register, errors }) => {
         <div className={`field ${errors.hiringManagerFirstName ? 'error' : ''}`}>
           <label className="label">Hiring Manager's First Name</label>
           <input
-            {...register("hiringManagerFirstName", { required: true })}
+            {...register("hiringManagerFirstName", { required: false })}
             placeholder="First Name"
             className="text-input"
           />
-          {errors.hiringManagerFirstName && <span className="message">This field is required</span>}
+          
         </div>
 
         {/* Last Name */}
         <div className={`field ${errors.hiringManagerLastName ? 'error' : ''}`}>
           <label className="label">Hiring Manager's Last Name</label>
           <input
-            {...register("hiringManagerLastName", { required: true })}
+            {...register("hiringManagerLastName", { required: false })}
             placeholder="Last Name"
             className="text-input"
           />
-          {errors.hiringManagerLastName && <span className="message">This field is required</span>}
+         
         </div>
       </div>
 
@@ -44,7 +44,7 @@ const HrSection: React.FC<HrSectionProps> = ({ register, errors }) => {
         <label className="label">Hiring Manager's Email</label>
         <input
           {...register("hiringManagerEmail", {
-            required: "Email is required",
+            required: false,
             pattern: {
               value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
               message: "Invalid email address",
@@ -61,7 +61,7 @@ const HrSection: React.FC<HrSectionProps> = ({ register, errors }) => {
       <div className={`field ${errors.isRehire ? 'error' : ''}`}>
         <label className="label">Is this a Rehire?</label>
         <select
-          {...register("isRehire", { required: true })}
+          {...register("isRehire", { required: false })}
           className="select"
           onChange={(e) => setIsRehire(e.target.value === 'no')}
         >
@@ -69,7 +69,7 @@ const HrSection: React.FC<HrSectionProps> = ({ register, errors }) => {
           <option value="yes">Yes</option>
           <option value="no">No</option>
         </select>
-        {errors.isRehire && <span className="message">This field is required</span>}
+        
       </div>
 
       {/* If not a Rehire, show New Hire or Temp Hire options */}
@@ -81,7 +81,7 @@ const HrSection: React.FC<HrSectionProps> = ({ register, errors }) => {
             <option value="newHire">New Hire</option>
             <option value="tempHire">Temp Hire</option>
           </select>
-          {errors.hireType && <span className="message">This field is required</span>}
+          
         </div>
       )}
 
@@ -95,7 +95,7 @@ const HrSection: React.FC<HrSectionProps> = ({ register, errors }) => {
             name="positionType"
             type="radio"
             value="newlyCreated"
-            {...register("positionType", { required: true })}
+            {...register("positionType", { required: false })}
             onChange={() => setIsReplacement(false)}
           />
           <label htmlFor="position-new">Newly Created</label>
@@ -106,12 +106,12 @@ const HrSection: React.FC<HrSectionProps> = ({ register, errors }) => {
             name="positionType"
             type="radio"
             value="replacement"
-            {...register("positionType", { required: true })}
+            {...register("positionType", { required: false })}
             onChange={() => setIsReplacement(true)}
           />
           <label htmlFor="position-replacement">Replacement</label>
         </div>
-        {errors.positionType && <span className="message">This field is required</span>}
+        
       </div>
 
       {/* If Replacement is selected, show fields to enter employee being replaced */}
@@ -125,7 +125,7 @@ const HrSection: React.FC<HrSectionProps> = ({ register, errors }) => {
               placeholder="Last Name"
               className="text-input"
             />
-            {errors.replacedLastName && <span className="message">This field is required</span>}
+            
           </div>
 
           {/* Employee Being Replaced - First Name */}
@@ -136,7 +136,7 @@ const HrSection: React.FC<HrSectionProps> = ({ register, errors }) => {
               placeholder="First Name"
               className="text-input"
             />
-            {errors.replacedFirstName && <span className="message">This field is required</span>}
+            
           </div>
         </div>
       )}
@@ -145,24 +145,24 @@ const HrSection: React.FC<HrSectionProps> = ({ register, errors }) => {
       <div className={`field ${errors.workSchedule ? 'error' : ''}`}>
         <label className="label">Work Schedule</label>
         <textarea
-          {...register("workSchedule", { required: true })}
+          {...register("workSchedule", { required: false })}
           placeholder="Enter work schedule"
           className="textarea"
           rows={4}
         />
-        {errors.workSchedule && <span className="message">This field is required</span>}
+        
       </div>
 
             {/* HR Notes Section */}
             <div className={`field ${errors.hrNotes ? 'error' : ''}`}>
         <label className="label">Extra Instructions for HR</label>
         <textarea
-          {...register("hrnotes", { required: true })}
+          {...register("hrnotes", { required: false })}
           placeholder="Enter any additional instructions for HR"
           className="textarea"
           rows={4}
         />
-        {errors.workSchedule && <span className="message">This field is required</span>}
+        
       </div>
     </fieldset>
   );

@@ -29,7 +29,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({ options, name, register, 
               name={name}
               type="radio"
               value={option.value}
-              {...register(name, { required: true })}
+              {...register(name, { required: false})}
             />
             <label className="checkbox-label" htmlFor={`${name}-${option.value}`}>
               {option.label}
@@ -37,7 +37,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({ options, name, register, 
           </li>
         ))}
       </ul>
-      {errors[name] && <span className="message">This field is required</span>}
+      
     </div>
   );
 };

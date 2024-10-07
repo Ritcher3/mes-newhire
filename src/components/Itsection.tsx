@@ -23,13 +23,13 @@ const Itsection: React.FC<ItsectionProps> = ({ register, errors }) => {
       {/* Email Address */}
       <div className={`field ${errors.emailDomain ? 'error' : ''}`}>
         <label className="label">Email Address?</label>
-        <select {...register("emailDomain", { required: true })} className="select">
+        <select {...register("emailDomain", { required: false})} className="select">
           <option value="">Select Email Domain</option>
           <option value="@mesfire.com">@mesfire.com</option>
           <option value="@mesuniforms.com">@mesuniforms.com</option>
           <option value="@lawmensupply.com">@lawmensupply.com</option>
         </select>
-        {errors.emailDomain && <span className="message">This field is required</span>}
+        
       </div>
 
       {/* Mobile Devices */}
@@ -67,7 +67,7 @@ const Itsection: React.FC<ItsectionProps> = ({ register, errors }) => {
               placeholder="Enter Area Code or Existing Number"
               className="text-input"
             />
-            {errors.cellPhoneNumber && <span className="message">This field is required</span>}
+            
           </div>
         )}
       </div>
@@ -130,7 +130,7 @@ const Itsection: React.FC<ItsectionProps> = ({ register, errors }) => {
               placeholder="Enter Extension"
               className="text-input"
             />
-            {errors.deskPhoneExt && <span className="message">This field is required</span>}
+            
           </div>
         )}
         {showMonitorOptions && (
@@ -141,7 +141,7 @@ const Itsection: React.FC<ItsectionProps> = ({ register, errors }) => {
               <option value="1">1 Monitor</option>
               <option value="2">2 Monitors</option>
             </select>
-            {errors.monitorQuantity && <span className="message">This field is required</span>}
+            
           </div>
         )}
       </div>
@@ -150,7 +150,7 @@ const Itsection: React.FC<ItsectionProps> = ({ register, errors }) => {
       <div className={`field ${errors.shipToAddress ? 'error' : ''}`}>
         <label className="label">Ship to Address</label>
         <select
-          {...register("shipToAddress", { required: true })}
+          {...register("shipToAddress", { required: false})}
           className="select"
           onChange={handleLocationChange}
         >
@@ -166,7 +166,7 @@ const Itsection: React.FC<ItsectionProps> = ({ register, errors }) => {
           className="text-input"
           disabled={selectedLocation !== 'other'}
         />
-        {errors.shipToAddress && <span className="message">This field is required</span>}
+        
       </div>
 
       {/* IT Notes Section */}
@@ -178,7 +178,7 @@ const Itsection: React.FC<ItsectionProps> = ({ register, errors }) => {
           className="textarea"
           rows={4}
         />
-        {errors.itNotes && <span className="message">This field is required</span>}
+        
       </div>
     </fieldset>
   );
