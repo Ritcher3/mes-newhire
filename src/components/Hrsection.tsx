@@ -66,8 +66,8 @@ const HrSection: React.FC<HrSectionProps> = ({ register, errors }) => {
           onChange={(e) => setIsRehire(e.target.value === 'no')}
         >
           <option value="">Select an option</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
         </select>
         
       </div>

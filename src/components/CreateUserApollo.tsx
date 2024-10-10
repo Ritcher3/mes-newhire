@@ -35,10 +35,11 @@ const CreateUserApollo = () => {
       deskPhoneExt: formData.deskPhoneExt || null, // Optional field
       monitorQuantity: formData.monitorQuantity || null, // Optional field
       createdAt: new Date().toISOString(), // Date of submission
+      itNotes: formData.itNotes,
     };
 
     try {
-      const response = await fetch("https://httpbin.org/post", {
+      const response = await fetch("https://new-hire-form-handler.azurewebsites.net/api/SubmitFormFunction?code=FRbRyAKQrDOxEwtGSpALLjvacmh7Ivp9LSTOHOqDWKB-AzFu34pYYg%3D%3D", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -25,6 +25,7 @@ export interface CreateUserFormModel {
   itDevices?: ('deskPhone' | 'laptop' | 'desktop' | 'monitors')[];
   deskPhoneExt?: string; 
   monitorQuantity?: '1' | '2';
+  itNotes: string;
 }
 
 const CreateUserLogic = ({ defaultValues, onSubmit }: { defaultValues: any; onSubmit: any }) => {
