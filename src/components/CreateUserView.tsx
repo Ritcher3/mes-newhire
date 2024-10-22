@@ -59,10 +59,10 @@ const CreateUserView = ({ onSubmit }: CreateUserViewProps) => {
         {/* Phone Number and Start Date side by side */}
         <div className="form-row">
           {/* Phone Number */}
-          <div className={`field ${errors.phonenumber ? 'error' : ''}`}>
+          <div className={`field ${errors.phoneNumber ? 'error' : ''}`}>
             <label className="label">Phone Number</label>
             <input
-              {...register("phonenumber", { required: false })}
+              {...register("phoneNumber", { required: false })}
               placeholder="Phone Number"
               type="tel"
               className="text-input"
